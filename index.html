@@ -28,6 +28,11 @@
         position: sticky;
         top: 0;
         z-index: 100;
+        transition: all 0.3s ease;
+      }
+
+      header.scrolled {
+        padding: 12px 24px;
       }
 
       header h1 {
@@ -37,12 +42,23 @@
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         margin-bottom: 8px;
         animation: fadeInDown 0.8s ease-out;
+        transition: font-size 0.3s ease;
+      }
+
+      header.scrolled h1 {
+        font-size: 1.5rem;
+        margin-bottom: 0;
       }
 
       header p {
         font-size: 1.1rem;
         opacity: 0.95;
         animation: fadeInUp 0.8s ease-out 0.2s both;
+        transition: opacity 0.3s ease, font-size 0.3s ease;
+      }
+
+      header.scrolled p {
+        display: none;
       }
 
       main {
@@ -151,11 +167,49 @@
 
       .person-card:hover {
         background: #f0ebe2;
-        transform: translateX(8px);
       }
 
       .person-card p {
         margin-bottom: 0;
+      }
+
+      .person-name {
+        color: #3b4c62;
+        display: block;
+        margin-bottom: 12px;
+        font-size: 1.15rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        user-select: none;
+      }
+
+      .person-name:hover {
+        color: #4f5d74;
+        transform: translateX(4px);
+      }
+
+      .person-name::before {
+        content: "▼ ";
+        display: inline-block;
+        transition: transform 0.3s ease;
+        margin-right: 8px;
+      }
+
+      .person-name.collapsed::before {
+        transform: rotate(-90deg);
+      }
+
+      .person-details {
+        max-height: 500px;
+        overflow: hidden;
+        transition: max-height 0.4s ease, opacity 0.4s ease;
+        opacity: 1;
+      }
+
+      .person-details.collapsed {
+        max-height: 0;
+        opacity: 0;
       }
 
       .person-with-image {
@@ -252,6 +306,10 @@
           font-size: 2rem;
         }
 
+        header.scrolled h1 {
+          font-size: 1.2rem;
+        }
+
         h2 {
           font-size: 1.5rem;
         }
@@ -321,16 +379,16 @@
       <section class="section" id="history">
         <h2>📖 Brief History of The Boldons</h2>
         <p>
-          Lying within the historic boundaries of County Durham, the villages are first recorded in print in 1170. Their names evolved from the words "Bold" or "Botl", meaning a building, and "dun", meaning a hill.
+          Lying within the historic boundaries of County Durham, the villages are first recorded in print in 1170. Their names evolved from the words "Bold" or "Botl", meaning a building, and "du[...]
         </p>
         <p>
-          In 1866, work began sinking a pit that began producing coal in 1869; it was then known as Boldon New Winning. The village that developed nearby in the 1870s became known as Boldon Colliery.
+          In 1866, work began sinking a pit that began producing coal in 1869; it was then known as Boldon New Winning. The village that developed nearby in the 1870s became known as Boldon Colli[...]
         </p>
         <p>
-          Despite the relatively small geographical area, there are a significant number of older buildings considered as being of architectural merit including churches, public houses and former country houses.
+          Despite the relatively small geographical area, there are a significant number of older buildings considered as being of architectural merit including churches, public houses and former[...]
         </p>
         <p>
-          After the colliery was closed, the former industrial land lay derelict for many years. In 2000, Colliery Wood was created with over 2,500 trees planted; it is popular with the local community.
+          After the colliery was closed, the former industrial land lay derelict for many years. In 2000, Colliery Wood was created with over 2,500 trees planted; it is popular with the local com[...]
         </p>
       </section>
 
@@ -342,25 +400,27 @@
         </div>
 
         <div id="thunder-road" class="person-card">
-          <strong style="color: #3b4c62; display: block; margin-bottom: 12px; font-size: 1.15rem;">The Tales of Thunder Road</strong>
-          <p>
-            With stretches of the road being constructed as early as 1600, Thunder Road (formally Newcastle Road) connects Boldon to the nearby town of Fulwell.
-          </p>
-          <p style="margin-top: 12px;">
-            By the 1930s, the road became a paved route, beginning a long history of utilisation—not only for mobility, but as a drag strip.
-          </p>
-          <p style="margin-top: 12px;">
-            Following national speed laws, in 1971, Thunder Road became a national speed limit road, and its future of pushing cars to their limits was set.
-          </p>
-          <p style="margin-top: 12px;">
-            In 1995, 'Junior' was able to clock 140mph in his 1.1L car, after cutting a red wire and driving with both feet on the accelerator.
-          </p>
-          <p style="margin-top: 12px;">
-            The golden age of Thunder Road ended in 2002, when its speed limit was decreased to 50mph, and then recently down to 40mph in some stretches.
-          </p>
-          <p style="margin-top: 12px;">
-            <em>According to legend, at 2AM, once you clock 100+mph, the ghost of Junior appears alongside you.</em>
-          </p>
+          <strong class="person-name collapsed">The Tales of Thunder Road</strong>
+          <div class="person-details collapsed">
+            <p>
+              With stretches of the road being constructed as early as 1600, Thunder Road (formally Newcastle Road) connects Boldon to the nearby town of Fulwell.
+            </p>
+            <p style="margin-top: 12px;">
+              By the 1930s, the road became a paved route, beginning a long history of utilisation—not only for mobility, but as a drag strip.
+            </p>
+            <p style="margin-top: 12px;">
+              Following national speed laws, in 1971, Thunder Road became a national speed limit road, and its future of pushing cars to their limits was set.
+            </p>
+            <p style="margin-top: 12px;">
+              In 1995, 'Junior' was able to clock 140mph in his 1.1L car, after cutting a red wire and driving with both feet on the accelerator.
+            </p>
+            <p style="margin-top: 12px;">
+              The golden age of Thunder Road ended in 2002, when its speed limit was decreased to 50mph, and then recently down to 40mph in some stretches.
+            </p>
+            <p style="margin-top: 12px;">
+              <em>According to legend, at 2AM, once you clock 100+mph, the ghost of Junior appears alongside you.</em>
+            </p>
+          </div>
         </div>
 
         <div class="divider"></div>
@@ -370,63 +430,99 @@
         </div>
 
         <div id="notable-people" class="person-card">
-          <strong style="color: #3b4c62; display: block; margin-bottom: 12px;">Denise Robertson (1932–2016)</strong>
-          <p>
-            Television agony aunt on This Morning, who regularly appeared on the show from its inception in 1988 until shortly before her death in 2016, lived in East Boldon. Her compassionate advice touched millions of viewers.
-          </p>
+          <strong class="person-name collapsed">Denise Robertson (1932–2016)</strong>
+          <div class="person-details collapsed">
+            <p>
+              Television agony aunt on This Morning, who regularly appeared on the show from its inception in 1988 until shortly before her death in 2016, lived in East Boldon. Her compassionate ad[...]
+            </p>
+          </div>
         </div>
 
         <div class="person-with-image">
           <img src="daniel-james-smith.jpg" alt="Daniel James Smith - The Strong Man of Boldon" class="person-image" />
           <div class="person-content">
-            <strong style="color: #3b4c62; display: block; margin-bottom: 12px; font-size: 1.15rem;">Daniel James Smith (1864–1911)</strong>
+            <strong class="person-name collapsed">Daniel James Smith (1864–1911)</strong>
+            <div class="person-details collapsed">
+              <p>
+                A legendary miner who could allegedly lift two stones, both weighing approximately upwards of 43 kilograms, one in each hand. He lived in West Boldon all his life and became a local[...]
+              </p>
+              <p>
+                His feats of strength were the stuff of local legend, and he remains a celebrated figure in the history of The Boldons.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="person-card">
+          <strong class="person-name collapsed">'Cooky' (1976–)</strong>
+          <div class="person-details collapsed">
             <p>
-              A legendary miner who could allegedly lift two stones, both weighing approximately upwards of 43 kilograms, one in each hand. He lived in West Boldon all his life and became a local hero, known far and wide for his extraordinary strength.
-            </p>
-            <p>
-              His feats of strength were the stuff of local legend, and he remains a celebrated figure in the history of The Boldons.
+              Born only mere metres away from The River Don - or the burn as many know it to be, he spent the majority of his early years submerged in its polluted waters. Leader of the community, [...]
             </p>
           </div>
         </div>
 
         <div class="person-card">
-          <strong style="color: #3b4c62; display: block; margin-bottom: 12px;">'Cooky' (1976–)</strong>
-          <p>
-            Born only mere metres away from The River Don - or the burn as many know it to be, he spent the majority of his early years submerged in its polluted waters. Leader of the community, he's known for his resilience and contributions to local life.
-          </p>
+          <strong class="person-name collapsed">Matty Blah (1939–1945)</strong>
+          <div class="person-details collapsed">
+            <p>
+              A young boy who had a pedigree in the destruction of televisions. One significant incident was at a friend's party, in which he couldn't help but destroy a prized TV—a memorable mom[...]
+            </p>
+          </div>
         </div>
 
         <div class="person-card">
-          <strong style="color: #3b4c62; display: block; margin-bottom: 12px;">Matty Blah (1939–1945)</strong>
-          <p>
-            A young boy who had a pedigree in the destruction of televisions. One significant incident was at a friend's party, in which he couldn't help but destroy a prized TV—a memorable moment in Boldon folklore.
-          </p>
+          <strong class="person-name collapsed">The 'Boldon Brawler' (1950–1970)</strong>
+          <div class="person-details collapsed">
+            <p>
+              A local boxer who was known for his aggressive fighting style and his ability to take on opponents much larger than himself. He won several regional championships and remains a legend[...]
+            </p>
+          </div>
         </div>
 
         <div class="person-card">
-          <strong style="color: #3b4c62; display: block; margin-bottom: 12px;">The 'Boldon Brawler' (1950–1970)</strong>
-          <p>
-            A local boxer who was known for his aggressive fighting style and his ability to take on opponents much larger than himself. He won several regional championships and remains a legendary figure in local boxing history.
-          </p>
+          <strong class="person-name collapsed">The 'Boldon Bard' (1920–1980)</strong>
+          <div class="person-details collapsed">
+            <p>
+              A local poet and storyteller who was known for his vivid descriptions of life in the Boldons and his ability to capture the essence of the community in his work. His poetry remains a [...]
+            </p>
+          </div>
         </div>
 
         <div class="person-card">
-          <strong style="color: #3b4c62; display: block; margin-bottom: 12px;">The 'Boldon Bard' (1920–1980)</strong>
-          <p>
-            A local poet and storyteller who was known for his vivid descriptions of life in the Boldons and his ability to capture the essence of the community in his work. His poetry remains a treasured part of local heritage.
-          </p>
-        </div>
-
-        <div class="person-card">
-          <strong style="color: #3b4c62; display: block; margin-bottom: 12px;">Junior (1975–unknown)</strong>
-          <p>
-            The legendary speed racer who broke the world record for fastest speed clocked in a car – an incredible 140mph, achieved on Boldon's 'Newcastle Road'. His name lives on in Thunder Road folklore.
-          </p>
+          <strong class="person-name collapsed">Junior (1975–unknown)</strong>
+          <div class="person-details collapsed">
+            <p>
+              The legendary speed racer who broke the world record for fastest speed clocked in a car – an incredible 140mph, achieved on Boldon's 'Newcastle Road'. His name lives on in Thunder R[...]
+            </p>
+          </div>
         </div>
       </section>
     </main>
 
     <script>
+      // Header scroll effect
+      const header = document.querySelector('header');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      });
+
+      // Expandable person cards
+      const personNames = document.querySelectorAll('.person-name');
+      personNames.forEach(name => {
+        name.addEventListener('click', function() {
+          const details = this.nextElementSibling;
+          
+          // Toggle collapsed state
+          this.classList.toggle('collapsed');
+          details.classList.toggle('collapsed');
+        });
+      });
+
       // Smooth scrolling for navigation links
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
