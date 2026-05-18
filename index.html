@@ -28,7 +28,7 @@
         position: sticky;
         top: 0;
         z-index: 100;
-        transition: all 0.3s ease;
+        transition: padding 0.3s ease;
       }
 
       header.scrolled {
@@ -41,8 +41,7 @@
         letter-spacing: 1px;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         margin-bottom: 8px;
-        animation: fadeInDown 0.8s ease-out;
-        transition: font-size 0.3s ease;
+        transition: font-size 0.3s ease, margin-bottom 0.3s ease;
       }
 
       header.scrolled h1 {
@@ -53,12 +52,14 @@
       header p {
         font-size: 1.1rem;
         opacity: 0.95;
-        animation: fadeInUp 0.8s ease-out 0.2s both;
-        transition: opacity 0.3s ease, font-size 0.3s ease;
+        transition: opacity 0.3s ease, max-height 0.3s ease;
+        max-height: 100px;
+        overflow: hidden;
       }
 
       header.scrolled p {
-        display: none;
+        opacity: 0;
+        max-height: 0;
       }
 
       main {
@@ -114,7 +115,6 @@
         padding-bottom: 12px;
         border-bottom: 3px solid #4f5d74;
         display: inline-block;
-        animation: fadeInLeft 0.6s ease-out;
       }
 
       .section {
@@ -124,7 +124,6 @@
         margin-bottom: 32px;
         padding: 32px;
         transition: all 0.3s ease;
-        animation: fadeIn 0.6s ease-out;
       }
 
       .section:hover {
@@ -201,7 +200,7 @@
       }
 
       .person-details {
-        max-height: 500px;
+        max-height: 1000px;
         overflow: hidden;
         transition: max-height 0.4s ease, opacity 0.4s ease;
         opacity: 1;
@@ -267,39 +266,6 @@
         }
       }
 
-      @keyframes fadeInDown {
-        from {
-          opacity: 0;
-          transform: translateY(-20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @keyframes fadeInLeft {
-        from {
-          opacity: 0;
-          transform: translateX(-20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-
       /* Responsive */
       @media (max-width: 768px) {
         header h1 {
@@ -353,10 +319,6 @@
         background: #3b4c62;
         transform: scale(1.05);
       }
-
-      .collapsed {
-        display: none;
-      }
     </style>
   </head>
   <body>
@@ -400,8 +362,8 @@
         </div>
 
         <div id="thunder-road" class="person-card">
-          <strong class="person-name collapsed">The Tales of Thunder Road</strong>
-          <div class="person-details collapsed">
+          <strong class="person-name">The Tales of Thunder Road</strong>
+          <div class="person-details">
             <p>
               With stretches of the road being constructed as early as 1600, Thunder road (formally Newcastle Road) connects Boldon to the nearby town of Fulwell.
             </p>
@@ -430,8 +392,8 @@
         </div>
 
         <div id="notable-people" class="person-card">
-          <strong class="person-name collapsed">Denise Robertson (1932–2016)</strong>
-          <div class="person-details collapsed">
+          <strong class="person-name">Denise Robertson (1932–2016)</strong>
+          <div class="person-details">
             <p>
               Television agony aunt on This Morning, who regularly appeared on the show from its inception in 1988 until shortly before her death in 2016, lived in East Boldon.
             </p>
@@ -441,8 +403,8 @@
         <div class="person-with-image">
           <img src="daniel-james-smith.jpg" alt="Daniel James Smith - The Strong Man of Boldon" class="person-image" />
           <div class="person-content">
-            <strong class="person-name collapsed">Daniel James Smith (1864–1911)</strong>
-            <div class="person-details collapsed">
+            <strong class="person-name">Daniel James Smith (1864–1911)</strong>
+            <div class="person-details">
               <p>
                 Miner who could allegedly lift two stones, both weighing approximately upwards of 43 kilograms, one in each hand. He lived in West Boldon all his life until a mining accident in 1911— injuring him badly, leading to his death two weeks later. There is a memorial of Daniel in the back of Boldon Parish Church.
               </p>
@@ -451,8 +413,8 @@
         </div>
 
         <div class="person-card">
-          <strong class="person-name collapsed">'Cooky' (1976–)</strong>
-          <div class="person-details collapsed">
+          <strong class="person-name">'Cooky' (1976–)</strong>
+          <div class="person-details">
             <p>
               Born only mere metres away from The River Don— Or the burn as many knows it to be, he spent the majority of his early years submerged in its polluted waters. Leader of the West Boldon Wild Bunch (1987–1993), there was a notable instance in which Cooky was able to complete the 'Holy grail of digger jumping— The Leap over the well' in which he jumped over 12 yards, clearing the Don, and planting his soles in the mud on the other side— being the first (and last) in history to do so. Bypassers chanted his name, thus solidifying Cooky & the WBWB gang as a notorious group of digger jumping legends.
             </p>
@@ -460,8 +422,8 @@
         </div>
 
         <div class="person-card">
-          <strong class="person-name collapsed">Matty Blah (1939–1945)</strong>
-          <div class="person-details collapsed">
+          <strong class="person-name">Matty Blah (1939–1945)</strong>
+          <div class="person-details">
             <p>
               Was a young boy who had a pedigree in the destruction of Televisions. One significant incident was at a friend's party, in which he couldn't help but destroy the £1500 pound Television, using nothing but his cranium. Moments after the destruction, most of the party fled, out of fear of being accused in involvement.
             </p>
@@ -469,8 +431,8 @@
         </div>
 
         <div class="person-card">
-          <strong class="person-name collapsed">Andy (2009–)</strong>
-          <div class="person-details collapsed">
+          <strong class="person-name">Andy (2009–)</strong>
+          <div class="person-details">
             <p>
               Professional prospect cricket player— once hitting a ball 2.4km into the air, with such force a sonic boom was heard from the nearby town of Roker. Eventually, becoming too gluttonous, he reportedly consumed 4kg of curry from 'The Eastern Touch' daily, which blew away his Cricketing dreams. Fortunately, following intensive revision, he managed to achieve his academic ambitions.
             </p>
@@ -478,8 +440,8 @@
         </div>
 
         <div class="person-card">
-          <strong class="person-name collapsed">The 'Boldon Brawler' (1950–1970)</strong>
-          <div class="person-details collapsed">
+          <strong class="person-name">The 'Boldon Brawler' (1950–1970)</strong>
+          <div class="person-details">
             <p>
               A local boxer who was known for his aggressive fighting style and his ability to take on opponents much larger than himself. He won several regional championships and remains a legend in the boxing community.
             </p>
@@ -487,8 +449,8 @@
         </div>
 
         <div class="person-card">
-          <strong class="person-name collapsed">The 'Boldon Bard' (1920–1980)</strong>
-          <div class="person-details collapsed">
+          <strong class="person-name">The 'Boldon Bard' (1920–1980)</strong>
+          <div class="person-details">
             <p>
               A local poet and storyteller who was known for his vivid descriptions of life in the Boldons and his ability to capture the essence of the community in his work. His poetry remains a cherished part of local heritage.
             </p>
@@ -496,8 +458,8 @@
         </div>
 
         <div class="person-card">
-          <strong class="person-name collapsed">Junior (1975–unknown)</strong>
-          <div class="person-details collapsed">
+          <strong class="person-name">Junior (1975–unknown)</strong>
+          <div class="person-details">
             <p>
               Broke the world record for fastest speed clocked in a car— 140mph, on Boldons 'Newcastle Road'. His name lives on in Thunder Road legend.
             </p>
@@ -541,25 +503,6 @@
             });
           }
         });
-      });
-
-      // Add subtle animations on scroll
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -100px 0px'
-      };
-
-      const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.style.animation = 'fadeIn 0.6s ease-out forwards';
-            observer.unobserve(entry.target);
-          }
-        });
-      }, observerOptions);
-
-      document.querySelectorAll('.section, .person-card, .person-with-image').forEach(el => {
-        observer.observe(el);
       });
     </script>
   </body>
